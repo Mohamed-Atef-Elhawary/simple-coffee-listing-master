@@ -1,12 +1,16 @@
-<div class="bg-[#111315] min-h-[100vh] relative">
-  <header>
-    <picture>
-      <source media="(min-width:1024px)" srcset="bg-cafe-lg.jpg" />
-      <source media="(min-width:768px)" srcset="bg-cafe.jpg" />
-      <img class="w-full object-cover" src="bg-cafe-sm.jpg" />
-    </picture>
-  </header>
-  <div class="w-[100px] h-[100px] bg-amber-600 absolute top-[50%] left-[50%] translate-[-50%]">
-    produce
+<div class="bg-red-400 p-1 relative">
+  <div class="flex flex-col bg-[#111315] min-h-screen p-1">
+    <header>
+      <picture>
+        <source media="(min-width:1024px)" srcset="bg-cafe-lg.jpg" />
+        <source media="(min-width:768px)" srcset="bg-cafe.jpg" />
+        <img class="w-full object-cover" src="bg-cafe-sm.jpg" />
+      </picture>
+    </header>
+    <div class="grow-3 bg-red-200 p-4">
+      <div class="bg-amber-700 p-5 m-1 relative top-">
+        <app-product></app-product>
+      </div>
+    </div>
   </div>
 </div>

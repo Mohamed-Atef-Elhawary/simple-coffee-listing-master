@@ -1,1 +1,43 @@
-<p>card works!</p>
+<div class="grid sm:grid-cols-3 gap-6 bg-[#1B1D1F]">
+  @for (coffee of computedCoffees(); track coffee.id) {
+    <article class="flex flex-col gap-2">
+      <div
+        [ngClass]="coffee.name === 'Espresso' ? 'bg-[#302522]' : 'bg-transparent'"
+        class="rounded-2xl relative overflow-hidden"
+      >
+        <img class="w-full object-cover" [src]="coffee.image" [alt]="coffee.name" />
+        @if (coffee.popular) {
+          <p
+            class="text-[#1B1D1F] font-bold text-[10px] bg-[#F6C768] absolute top-2 left-2 px-2 rounded-full"
+          >
+            Popular
+          </p>
+        }
+      </div>
+
+      <div class="flex justify-between">
+        <h2 class="text-[#FEF7EE] text-[12px]">{{ coffee.name }}</h2>
+        <p
+          class="bg-[#BEE3CC] text-[10px] text-[#1B1D1F] font-bold w-[40px] h-[15px] text-center rounded"
+        >
+          {{ coffee.price }}
+        </p>
+      </div>
+      <div class="flex justify-between items-center text-[10px] font-bold">
+        <div class="flex items-center gap-1">
+          <img [src]="coffee.rating ? 'Star_fill.svg' : 'Star.svg'" alt="" />
+          @if (coffee.rating) {
+            <p class="text-[#FEF7EE]">
+              {{ coffee.rating }} <span class="text-[#4D5562]">({{ coffee.votes }} votes)</span>
+            </p>
+          } @else {
+            <p class="text-[#4D5562]">No ratings</p>
+          }
+        </div>
+        @if (!coffee.available) {
+          <p class="text-[#ED735D]">Sold out</p>
+        }
+      </div>
+    </article>
+  }
+</div>
