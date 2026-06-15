@@ -1,5 +1,6 @@
 <div class="grid sm:grid-cols-3 gap-6 bg-[#1B1D1F]">
-  @for (coffee of computedCoffees(); track coffee.id) {
+  <!-- @for (coffee of computedCoffees(); track coffee.id) { -->
+  @for (coffee of computedCoffees(); track $index) {
     <article class="flex flex-col gap-2">
       <div
         [ngClass]="coffee.name === 'Espresso' ? 'bg-[#302522]' : 'bg-transparent'"

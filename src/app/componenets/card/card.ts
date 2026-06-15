@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   computed,
   effect,
@@ -23,7 +24,10 @@ import { JsonPipe, NgClass } from '@angular/common';
 export class Card implements OnInit {
   coffees: WritableSignal<Icoffee[]> = signal<Icoffee[]>([]);
   status = input.required<ProductStatus>();
-  constructor(private coffeeService: CoffeeService) {}
+  constructor(
+    private coffeeService: CoffeeService,
+    private cdr: ChangeDetectorRef,
+  ) {}
   computedCoffees = computed(() => {
     let status = this.status();
 
@@ -37,7 +41,8 @@ export class Card implements OnInit {
     this.coffeeService.getCoffee().subscribe({
       next: (products: Icoffee[]) => {
         this.coffees.set(products);
-        console.log('inittttttttttttttttttt');
+        this.cdr.detectChanges();
+        this.coffeeService.scrollHeight.set(document.documentElement.scrollHeight);
       },
       error: (err) => {
         console.log(err);
